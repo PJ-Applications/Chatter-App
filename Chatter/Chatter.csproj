@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201608051743575_Initial.Designer.cs">
       <DependentUpon>201608051743575_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608081519577_chats4.0.cs" />
+    <Compile Include="Migrations\201608081519577_chats4.0.Designer.cs">
+      <DependentUpon>201608081519577_chats4.0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -300,6 +304,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608051743575_Initial.resx">
       <DependentUpon>201608051743575_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608081519577_chats4.0.resx">
+      <DependentUpon>201608081519577_chats4.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

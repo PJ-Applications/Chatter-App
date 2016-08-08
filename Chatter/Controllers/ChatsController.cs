@@ -7,8 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Chatter.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Chatter.Controllers
 {
@@ -17,25 +15,8 @@ namespace Chatter.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Chats
-        [AllowAnonymous]
         public ActionResult Index()
         {
-            if (Request.IsAuthenticated)
-            {
-                UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-                ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
-
-                // assuming there is some kind of relationship between products and users
-                List<Chat> chats = db.Chats.Where(p => p.ApplicationUser.Equals(currentUser.UserName)).ToList(); // or .email or other field from your users table
-
-                // OPTIONAL: Make sure they see something
-                if (posts.Count == 0) // They have no related products so just send all of them
-                    chats = db.Chats.ToList();
-
-                // only send the products related to that user
-                return View(chats);
-            }
-            // User is not authenticated, send them all products
             return View(db.Chats.ToList());
         }
 
@@ -65,10 +46,13 @@ namespace Chatter.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ChatID,Post,TimeStamp")] Chat chat)
+        public ActionResult Create([Bind(Include = "ChatID,Post")] Chat chat)
         {
+              chat.TimeStamp = DateTime.Now;
+
             if (ModelState.IsValid)
             {
+              
                 db.Chats.Add(chat);
                 db.SaveChanges();
                 return RedirectToAction("Index");

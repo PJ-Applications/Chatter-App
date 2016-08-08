@@ -16,6 +16,6 @@ namespace Chatter.Models
         
 
 
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

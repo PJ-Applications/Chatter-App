@@ -24,10 +24,10 @@ namespace Chatter.Models
         //public int FollowerAccount { get; set; }     
 
         //Navigation properties.... "virtual" means it can be overridden
-        public virtual ICollection<ApplicationUser> Following { get; set; }
-        public virtual ICollection<ApplicationUser> Followers { get; set; }
-        public string Post { get; internal set; }
-
+        //public virtual ICollection<ApplicationUser> Following { get; set; }
+        //public virtual ICollection<ApplicationUser> Followers { get; set; }
+        //public string Post { get; internal set; }
+        public virtual ICollection<Chat> Chats { get; set; }
         //--------------------------------------------------------------------------------------------------------------------
 
 
@@ -47,15 +47,15 @@ namespace Chatter.Models
         {
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<ApplicationUser>()
-                .HasMany(x => x.Followers).WithMany(x => x.Following)
-                .Map(x => x.ToTable("Followers")
-                    .MapLeftKey("UserId")// we dont have a userID
-                    .MapRightKey("FollowerId"));
-            base.OnModelCreating(modelBuilder);
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<ApplicationUser>()
+        //        .HasMany(x => x.Followers).WithMany(x => x.Following)
+        //        .Map(x => x.ToTable("Followers")
+        //            .MapLeftKey("UserId")// we dont have a userID
+        //            .MapRightKey("FollowerId"));
+        //    base.OnModelCreating(modelBuilder);
+        //}
 
         public static ApplicationDbContext Create()
         {
