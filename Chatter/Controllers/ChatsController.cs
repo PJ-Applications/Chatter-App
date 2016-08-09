@@ -36,6 +36,7 @@ namespace Chatter.Controllers
         }
 
         // GET: Chats/Create
+        [Authorize(Roles = "canEdit")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +47,7 @@ namespace Chatter.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "canEdit")]
         public ActionResult Create([Bind(Include = "ChatID,Post")] Chat chat)
         {
               chat.TimeStamp = DateTime.Now;
@@ -62,6 +64,7 @@ namespace Chatter.Controllers
         }
 
         // GET: Chats/Edit/5
+        [Authorize(Roles = "canEdit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,6 +84,7 @@ namespace Chatter.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "canEdit")]
         public ActionResult Edit([Bind(Include = "ChatID,Post,TimeStamp")] Chat chat)
         {
             if (ModelState.IsValid)
@@ -93,6 +97,7 @@ namespace Chatter.Controllers
         }
 
         // GET: Chats/Delete/5
+        [Authorize(Roles = "canEdit")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,6 +115,7 @@ namespace Chatter.Controllers
         // POST: Chats/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "canEdit")]
         public ActionResult DeleteConfirmed(int id)
         {
             Chat chat = db.Chats.Find(id);
