@@ -374,6 +374,8 @@ namespace Chatter.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        // Adding tutorial code for authentication 
+                        await UserManager.AddToRoleAsync(user.Id, "canEdit");
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
