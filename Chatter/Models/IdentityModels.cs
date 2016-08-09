@@ -12,22 +12,23 @@ namespace Chatter.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
 
-    {   
+    {
         //public string ProfilePicUrl { get; set; }
         //need to find how to use hashset for password
         //HashSet<string> PasswordHashset = new HashSet<string> { get; set; }
         //var Password = new HashSet<int>(Password.Users.Select(char => c.UserID));
-       
+
         //Revisit for better variable type to store location
         //public string Description { get; set; }
         //public DateTime LastUpdate { get; set; }
         //public int FollowerAccount { get; set; }     
 
         //Navigation properties.... "virtual" means it can be overridden
-        //public virtual ICollection<ApplicationUser> Following { get; set; }
-        //public virtual ICollection<ApplicationUser> Followers { get; set; }
-        //public string Post { get; internal set; }
+        public virtual ICollection<ApplicationUser> Following { get; set; }
+        public virtual ICollection<ApplicationUser> Followers { get; set; }
         public virtual ICollection<Chat> Chats { get; set; }
+        public string DisplayName { get; set; }
+
         //--------------------------------------------------------------------------------------------------------------------
 
 

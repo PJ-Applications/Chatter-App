@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201608081519577_chats4.0.Designer.cs">
       <DependentUpon>201608081519577_chats4.0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608091722359_createdisplaynamefield.cs" />
+    <Compile Include="Migrations\201608091722359_createdisplaynamefield.Designer.cs">
+      <DependentUpon>201608091722359_createdisplaynamefield.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -307,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608081519577_chats4.0.resx">
       <DependentUpon>201608081519577_chats4.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608091722359_createdisplaynamefield.resx">
+      <DependentUpon>201608091722359_createdisplaynamefield.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -151,7 +151,7 @@ namespace Chatter.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DisplayName = model.DisplayName};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -375,7 +375,7 @@ namespace Chatter.Controllers
                     if (result.Succeeded)
                     {
                         // Adding tutorial code for authentication 
-                        await UserManager.AddToRoleAsync(user.Id, "canEdit");
+                        //await UserManager.AddToRoleAsync(user.Id, "canEdit");
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }

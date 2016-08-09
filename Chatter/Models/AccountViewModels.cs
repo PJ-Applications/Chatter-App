@@ -69,6 +69,12 @@ namespace Chatter.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        //create field for user to create display name and enforce parameters
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "Display Name")]
+        public string DisplayName { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
@@ -79,6 +85,7 @@ namespace Chatter.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        
     }
 
     public class ResetPasswordViewModel
